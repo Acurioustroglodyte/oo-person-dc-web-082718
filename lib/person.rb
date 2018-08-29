@@ -1,4 +1,5 @@
 # your code goes here
+require 'pry'
 
 class Person
 
@@ -7,7 +8,7 @@ class Person
     @name = name
     @bank_account = bank_account
     @happiness_points = happiness_points
-    @hygiene_points = hygiene_points unless hygiene_points < 0 || hygiene_points > 10
+    @hygiene_points = hygiene_points
   end
 
   def name
@@ -23,31 +24,67 @@ class Person
   end
 
   def happiness
-    @happiness_points# @happiness_points || @happiness_points += 1
+    @happiness_points
   end
 
-  def happiness=(points)
-    if points + @happiness_points > 10
+  def happiness=(new_happiness_points)
+    # binding.pry
+    #/ if points > than 10 set the value to 10
+    if new_happiness_points > 10
       @happiness_points = 10
-    elsif points + @happiness_points < 0
+    elsif new_happiness_points < 0
       @happiness_points = 0
+    #/ if points < 0 set the value 0
     else
-      @happiness_points = @happinesspoints
+      @happiness_points = new_happiness_points
     end
   end
 
-  # def hygiene
-  # end
-  #
-  # def happy?
-  # end
-  #
-  #
-  #
-  # def clean?
-  #   if @hygiene_points >
-  # end
+  def hygiene
+    @hygiene_points
+  end
 
 
+  def hygiene=(new_hygiene_points)
+    # binding.pry
+    #/ if points > than 10 set the value to 10
+    if new_hygiene_points > 10
+      @hygiene_points = 10
+    elsif new_hygiene_points < 0
+      @hygiene_points = 0
+    #/ if points < 0 set the value 0
+    else
+      @hygiene_points = new_hygiene_points
+    end
+  end
 
+  def happy?
+    if self.happiness >  7
+      true
+    else
+      false
+    end
+  end
+
+  def clean?
+    if self.hygiene > 7
+      true
+    else
+      false
+    end
+  end
+
+  def get_paid(salary)
+    @bank_account += salary
+    "all about the benjamins"
+  end
+
+  def take_bath
+    self.hygiene=(4)
+     binding.pry
+    "♪ Rub-a-dub just relaxing in the tub ♫"
+  end
+
+
+  # End of
 end
